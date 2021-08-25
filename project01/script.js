@@ -7,9 +7,17 @@ const password2 = document.getElementById('password2');
 // All funtions
 // Functions to show error
 
-function showError(input,message) {
+function showError(input, message) {
     const formControl = input.parentElement;
     formControl.className = 'form-control error';
+    const small = formControl.querySelector('small');
+    small.innexText = message;
+}
+
+//show success
+function showSuccess(input){
+    const formControl = input.parentElement;
+    formControl.className = 'form-control success';
 }
 
 
@@ -21,8 +29,25 @@ function showError(input,message) {
 form.addEventListener('submit', function(e) {
     e.preventDefault();
 
-    if ( username.value === ''){
-        showError(username,"username is required");
+    if (username.value === ''){
+        showError(username,'username is required');
+    }else {
+        showSuccess(username);
+    }
+    if (email.value === ''){
+        showError(email,'email is required');
+    }else {
+        showSuccess(email);
+    }
+    if (password.value === ''){
+        showError(password,'password is required');
+    }else {
+        showSuccess(password);
+    }
+    if (password2.value === ''){
+        showError(password2,'password2 is required');
+    }else {
+        showSuccess(password2);
     }
 });
 
